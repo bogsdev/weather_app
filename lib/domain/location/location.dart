@@ -3,11 +3,11 @@ import 'package:weather_app/domain/beans/location.dart';
 abstract class LocationResource {
   Future<LongLat> getLocation();
 
-  Future<LocationPermissionStatus> locationEnabled();
+  Future<LocationPermissionStatus> getPermission();
 
-  Future<void> requestPermission();
+  Future<LocationPermissionStatus> requestPermission();
 
   Future<bool> serviceEnabled();
 
-  Future<void> requestService();
+  Future<bool> requestService();
 }

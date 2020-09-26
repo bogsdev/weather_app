@@ -12,9 +12,28 @@ class LocationResourceImpl implements LocationResource {
     return LongLat(latitude: data.latitude, longitude: data.longitude);
   }
 
-  Future<LocationPermissionStatus> locationEnabled() async {
-    LocationPermissionStatus perm;
+  Future<LocationPermissionStatus> getPermission() async {
     PermissionStatus status = await location.hasPermission();
+    return _mapPermissionStatus(status);
+  }
+
+  Future<LocationPermissionStatus> requestPermission() async {
+    PermissionStatus status = await location.requestPermission();
+    return _mapPermissionStatus(status);
+  }
+
+  @override
+  Future<bool> requestService() async {
+    return await location.requestService();
+  }
+
+  @override
+  Future<bool> serviceEnabled() async {
+    return await location.serviceEnabled();
+  }
+
+  LocationPermissionStatus _mapPermissionStatus(PermissionStatus status) {
+    LocationPermissionStatus perm;
     if (status == PermissionStatus.granted) {
       perm = LocationPermissionStatus.granted;
     } else if (status == PermissionStatus.deniedForever) {
@@ -23,19 +42,5 @@ class LocationResourceImpl implements LocationResource {
       perm = LocationPermissionStatus.denied;
     }
     return perm;
-  }
-
-  Future<void> requestPermission() async {
-    await location.requestPermission();
-  }
-
-  @override
-  Future<void> requestService() async {
-    await location.requestService();
-  }
-
-  @override
-  Future<bool> serviceEnabled() async {
-    return await location.serviceEnabled();
   }
 }

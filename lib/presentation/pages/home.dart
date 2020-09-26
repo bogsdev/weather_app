@@ -5,6 +5,7 @@ import 'package:weather_app/core/factories/factory.dart';
 import 'package:weather_app/domain/authentication/authentication.dart';
 import 'package:weather_app/domain/beans/user.dart';
 import 'package:weather_app/domain/user/user_resource.dart';
+import 'package:weather_app/presentation/buttons/location_button.dart';
 import 'package:weather_app/presentation/common/dialogs.dart';
 import 'package:weather_app/presentation/common/error_dialogs.dart';
 import 'package:weather_app/presentation/common/loading_widget.dart';
@@ -108,11 +109,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: Container(
                         child: Center(
-                          child: RaisedButton(
-                            child: Text(Labels.i.getTheWeather),
-                            onPressed: () =>
-                                Navigation.i.navigateTo(routes_weather),
-                          ),
+                          child: LocationButton(),
                         ),
                       ),
                     )

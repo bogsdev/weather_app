@@ -89,7 +89,7 @@ class _LocationPermissionWidgetState extends State<LocationPermissionWidget> {
   }
 
   Future<LocationPermissionStatus> _getPermission() async {
-    return await Factory.i.get<LocationResource>().locationEnabled();
+    return await Factory.i.get<LocationResource>().getPermission();
   }
 
   @override

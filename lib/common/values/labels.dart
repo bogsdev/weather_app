@@ -5,6 +5,9 @@ class Labels {
   String error = "Error";
   String pageNotFoundColon = "Page not found: ";
   String login = "Login";
+  String showLocation = "Show Location";
+  String latitude = "Latitude";
+  String longitude = "Longitude";
   String getTheWeather = "Get the Weather";
   String weather = "Weather";
   String githubHost = "https://github.com/";
